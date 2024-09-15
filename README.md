@@ -1,14 +1,13 @@
 # Web Scraping de Restaurantes no Google Maps
 
-Este projeto visa buscar informações de restaurantes cadastrados no Google Maps, armazenando-os em um banco de dados NoSQL. O objetivo é realizar uma análise de concorrência, agregando dados obtidos de outras fontes para fornecer insights sobre o setor de alimentação na região.
+Este projeto visa coletar informações de restaurantes cadastrados no Google Maps, armazenando-os em um banco de dados NoSQL com o objetivo de, juntamente com outras informações obtidas de outras fontes, realizar uma análise de concorrência. Posteriormente, o projeto incluirá um módulo para integração com o Telegram, permitindo que a API do ChatGPT responda a consultas como: "Hoje quero sair pra comer, me recomende um local perto de mim que esteja aberto à noite".
 
 ## Sumário
 
 - [Ferramentas](#ferramentas)
 - [Ambiente](#ambiente)
 - [Motivação](#motivação)
-- [Instalação](#instalação)
-- [Uso](#uso)
+- [Como Executar](#como-executar)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
 - [Contato](#contato)
@@ -17,22 +16,24 @@ Este projeto visa buscar informações de restaurantes cadastrados no Google Map
 
 As ferramentas utilizadas neste projeto são:
 
-- **Python 3.x**: Linguagem de programação principal.
-- **Selenium**: Biblioteca para automação de navegadores web.
-- **Google Chrome**: Navegador utilizado para o web scraping.
-- **ChromeDriver**: Driver necessário para o Selenium controlar o Chrome.
-- **Banco de Dados NoSQL**: Para armazenamento dos dados coletados (a ser definido, por exemplo, MongoDB).
+- **Python**: Linguagem de programação principal do projeto.
+- **Selenium**: Biblioteca para automação de navegadores e web scraping.
+- **NoSQL Database**: Banco de dados para armazenamento das informações coletadas (a ser definido, opções incluem MongoDB, CouchDB, etc).
+- **Telegram Bot API**: Para integração com o Telegram.
+- **OpenAI ChatGPT API**: Para processamento de linguagem natural e geração de respostas às consultas dos usuários.
 
 ## Ambiente
 
-Para configurar o ambiente de desenvolvimento, você precisará:
+O projeto foi desenvolvido e testado nos seguintes ambientes:
 
-- Sistema operacional Windows, macOS ou Linux.
-- Python 3.x instalado.
-- Google Chrome instalado.
-- ChromeDriver compatível com a versão do seu Chrome.
-- Virtualenv ou venv para criar um ambiente virtual (opcional, mas recomendado).
+- **Sistema Operacional**: Windows 10 ou superior / Ubuntu 20.04 LTS ou superior.
+- **Python**: Versão 3.8 ou superior.
+- **Navegador**: Google Chrome (versão compatível com o ChromeDriver utilizado).
+- **ChromeDriver**: Driver compatível com a versão do Google Chrome instalada.
 
 ## Motivação
 
-A motivação deste projeto é coletar e analisar dados de restaurantes em uma região específica para entender o cenário de concorrência. Isso pode ser útil para empreendedores que desejam abrir um novo negócio, pesquisadores acadêmicos ou qualquer pessoa interessada em dados do setor alimentício.
+A motivação por trás deste projeto é facilitar a busca por restaurantes e melhorar a experiência do usuário ao procurar por locais para comer. Ao coletar dados do Google Maps e integrá-los com outras fontes, é possível fornecer recomendações mais precisas e personalizadas, além de realizar análises de concorrência no setor gastronômico.
+
+## Como Executar
+
