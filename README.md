@@ -18,7 +18,7 @@ As ferramentas utilizadas neste projeto são:
 
 - **Python**: Linguagem de programação principal do projeto.
 - **Selenium**: Biblioteca para automação de navegadores e web scraping.
-- **NoSQL Database**: Banco de dados para armazenamento das informações coletadas (a ser definido, opções incluem MongoDB, CouchDB, etc).
+- **NoSQL Database**: Banco de dados para armazenamento das informações coletadas (MongoDB).
 - **Telegram Bot API**: Para integração com o Telegram.
 - **OpenAI ChatGPT API**: Para processamento de linguagem natural e geração de respostas às consultas dos usuários.
 
