@@ -1,1 +1,1 @@
-string_connection = 'mongodb+srv://otavioiasbeck:EMgOnd2JyEaw18BH@cluster0.binfj.mongodb.net/'
+string_connection = ''
