@@ -8,8 +8,6 @@ Este projeto visa coletar informações de restaurantes cadastrados no Google Ma
 - [Ambiente](#ambiente)
 - [Motivação](#motivação)
 - [Como Executar](#como-executar)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
 - [Contato](#contato)
 
 ## Ferramentas
