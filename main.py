@@ -91,4 +91,13 @@ obj_prep = organize_data.PreProcessing(df)
 obj_prep.dataset_todict()
 df = obj_prep.return_()
 
+client = inputs.Get_connection()
+db = client['scrapping_google']
+collection = db['restaurants']
+
+try:
+    result = collection.insert_many(df)
+    print(f'dados inseridos com sucesso ids: {result.inserted_ids}')
+except Exception as e:
+    print(f'nao foi possivel inserir, vide error: {e}')
 
