@@ -14,7 +14,7 @@ Este projeto visa coletar informações de restaurantes cadastrados no Google Ma
 
 As ferramentas utilizadas neste projeto são:
 
-- **Python**: Linguagem de programação principal do projeto.
+- **Python**: Linguagem de programação
 - **Selenium**: Biblioteca para automação de navegadores e web scraping.
 - **NoSQL Database**: Banco de dados para armazenamento das informações coletadas (MongoDB).
 - **Telegram Bot API**: Para integração com o Telegram.
@@ -24,7 +24,7 @@ As ferramentas utilizadas neste projeto são:
 
 O projeto foi desenvolvido e testado nos seguintes ambientes:
 
-- **Sistema Operacional**: Windows 10 ou superior / Ubuntu 20.04 LTS ou superior.
+- **Sistema Operacional**: Windows / Ubuntu 20.04 LTS ou superior.
 - **Python**: Versão 3.8 ou superior.
 - **Navegador**: Google Chrome (versão compatível com o ChromeDriver utilizado).
 - **ChromeDriver**: Driver compatível com a versão do Google Chrome instalada.
