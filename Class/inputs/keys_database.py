@@ -2,3 +2,5 @@ string_connection = 'mongodb+srv://otavioiasbeck:EMgOnd2JyEaw18BH@cluster0.binfj
 
 telegram_token = '7003273702:AAEy8SQbzeyjyt9yxj5DST1n4dtC9DsjM4I'
 telegram_chat_id = '1224712338'
+
+api_gpt = 'sk-MWkmR8Jv5sXAULSYoPIE2Fw3KomeYF9fTbPn-hiojJT3BlbkFJ0OZ9o21e725rb5HbsuwFpuaTx_6zoaxtyOBy2zJe4A'

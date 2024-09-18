@@ -100,4 +100,3 @@ try:
     print(f'dados inseridos com sucesso ids: {result.inserted_ids}')
 except Exception as e:
     print(f'nao foi possivel inserir, vide error: {e}')
-
