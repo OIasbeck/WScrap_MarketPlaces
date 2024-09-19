@@ -10,10 +10,8 @@ from pymongo import MongoClient
 
 class Get_connection:
 
-    def __init__(self):
+    def conn():return MongoClient(string_connection)
 
-        self.clinet = MongoClient(string_connection)
-    
 class Driver:
 
     def __init__(self,

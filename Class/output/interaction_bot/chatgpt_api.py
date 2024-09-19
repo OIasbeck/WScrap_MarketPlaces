@@ -3,9 +3,6 @@ import os
 
 from Class.inputs.keys_database import api_gpt
 
-# OPENAI_API_KEY = os.getenv(api_gpt)
-# OpenAI.api_key = OPENAI_API_KEY
-
 client = OpenAI(
     api_key = api_gpt,
 )

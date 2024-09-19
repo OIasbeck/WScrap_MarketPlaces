@@ -33,7 +33,7 @@ class PreProcessing:
             self.dataframe = self.dataframe.to_dict(orient='records')
 
         except Exception as e:
-            print(f"Houve um erro na transformação para dicionário, vide error: {e}")
+            print(f"Houve um erro na transformacao para dicioario, vide error: {e}")
 
     def return_(self): return self.dataframe
 
