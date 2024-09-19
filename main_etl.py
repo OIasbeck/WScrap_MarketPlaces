@@ -8,37 +8,7 @@ from Class.output import organize_data
 
 import pandas as pd
 
-##### POR ENDERECO ######
-# obj_driver = inputs.Driver(url="https://www.google.com/maps/")
 
-# driver = obj_driver.inicialize_driver()
-
-# lista_end = [
-#             # 'av floriano peixoto 2431  nossa sra aparecida uberlandia  mg 38400700'
-#              'Av. Inglaterra, 45 - Tibery, Uberlândia - MG, 38405-050'
-#             # 'Av. Noruega, 230 - Tibery, Uberlândia - MG, 38408-002'
-# ]
-
-# dfs = []
-# for endereco in lista_end:
-
-#     print(f'---> Pesquisando o endereco: {endereco}...')
-#     driver = obj_driver.prepare_scrapping(driver, locate=endereco)
-
-#     print(f'--> Iniciando Scrapping...')
-#     dataframe = dev.Process().scrapping_bussines(driver, wait = 0.8)
-
-#     obj_preprocess = organize_data.PreProcessing(dataframe)
-#     obj_preprocess.new_features()
-#     obj_preprocess.adjusting_columns()
-#     dataframe = obj_preprocess.return_()
-
-#     dfs.append(dataframe)
-
-# dataframe = pd.concat(dfs).reset_index(drop = True)
-
-
-##### ALL ######
 obj_driver = inputs.Driver(
     url = "https://www.google.com/maps/search/restaurantes+em+Uberl%C3%A2ndia,+MG/@-18.9083338,-48.269227,15z?entry=ttu")
 
@@ -48,15 +18,6 @@ obj_manipulation = aux.FindPlaces()
 obj_manipulation.load_places(driver)
 
 qtd_locais = obj_manipulation.list_places(driver)
-
-
-
-obj_manipulation.list_places(driver)[1].click()
-
-
-qtd_locais[0].click()
-
-
 
 dfs = []    
 
@@ -83,7 +44,6 @@ for posicao in range(len(qtd_locais)):
     aux.scrow_down(driver, qtd = 2)
 
 dataframe = pd.concat(dfs).reset_index(drop = True)
-
 
 df = dataframe.copy()
 
