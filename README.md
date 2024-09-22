@@ -9,7 +9,8 @@ Este projeto visa coletar informações de restaurantes cadastrados no Google Ma
 - [Motivação](#motivação)
 - [Como Executar](#como-executar)
 - [Entregas Parciais](#entregas-parciais)
-- 
+- [Fluxo Lógico](#fluxo-lógico)
+  
 ## Ferramentas
 
 As ferramentas utilizadas neste projeto são:
@@ -107,4 +108,10 @@ Ahh... é chato, posteriormente vou colocar um Docker com os dowloads para prepa
 - LONGITUDE (float) [Coordenada Geográfica]
 - DAT_FIM (string) [Data de Encerramento]
  
-  
+---------------------
+## Fluxo Lógico
+- Abaixo encontramos as 2 formas (improvisadíssimas, bem ruins) da forma de acionar a captura de dados, a primeria que é passando um endereço (adaptação futura para receber latitude e longitude), e a outra que é apenas executando o script, onde é rastreado todos restaurantes cadastrados.
+  ![etl_nosql](https://github.com/user-attachments/assets/68d2d01f-d3e9-417a-81a6-c7d1c2fbff46)
+
+- Abaixo encontramos o fluxo lógico das interações do usuário pelo Telegram com o Banco de Dados, interpretados pela API do Chatgpt
+  ![Interaction_NOSQL](https://github.com/user-attachments/assets/153561ec-e882-4e69-86bf-3d98fd301481)
