@@ -2,6 +2,7 @@ import json
 
 from Class.inputs.keys_all import *
 from Class.inputs.keys_database import api_gpt
+from crude_functions import *
 
 from openai import OpenAI
 import nltk
@@ -22,15 +23,16 @@ def remove_stopwords(text, stopwords_set):
     return ' '.join(filtered_words)
 
 def interpret_user_message(user_message):
-
     system_prompt = (
         "Você é um assistente que interpreta solicitações de usuários "
-        "para consultas em um banco de dados de restaurantes. "
+        "para consultas e operações CRUD em um banco de dados de restaurantes. "
         "Responda no formato JSON com os campos 'intent' e 'parameters'. "
-        "Os tipos no campo intent podem ser: recommendation ou smalltalk"
-        "Se o usuário estiver fazendo qualquer pergunta referente ao restaurante ou detalhes do restaurante, defina 'intent' como 'recommendation' "
-        "Se o usuário estiver apenas conversando sobre um assunto que não possui relação com restaurante ou detalhes do restaurante defina 'intent' como 'smalltalk' "
-        "e não inclua 'parameters'. Não inclua explicações adicionais."
+        "Os tipos no campo intent podem ser: recommendation, smalltalk, update, select, delete. "
+        "Se o usuário estiver pedindo para realizar operações no banco de dados como atualizar ou consultar um restaurante, defina o intent como update, select, ou delete conforme apropriado. "
+        "Os 'parameters' devem conter os campos necessários para realizar a operação, como 'nome', 'id', 'campo' (para updates), e 'valor'. "
+        "Se o usuário estiver apenas conversando, defina 'intent' como 'smalltalk'. "
+        "Se o usuário estiver pedindo recomendações de restaurantes, defina 'intent' como 'recommendation'. "
+        "Não inclua explicações adicionais."
     )
     
     response = client.chat.completions.create(
@@ -45,12 +47,12 @@ def interpret_user_message(user_message):
     return assistant_reply
 
 def process_intent(intent_data, collection, user_message):
-
     intent = intent_data.get('intent')
+    parameters = intent_data.get('parameters', {})
 
     if intent == 'recommendation':
+
         num_restaurantes = 20
-        
         data = []
         cursor = collection.find({}, {'_id': 0}).limit(num_restaurantes)
         for restaurant in cursor:
@@ -72,7 +74,7 @@ def process_intent(intent_data, collection, user_message):
                 detalhes_texto += f"{key_clean}: {value_clean}, "
             detalhes_texto = detalhes_texto.rstrip(', ')
             
-            resumo = f"Nome: {nome}, Nota: {nota}, Endereço: {endereco}, Horario Funcionamento: {hr_funcionamento}, Horario de Maior Movimento: {maior_movimento}, Telefone: {telefone}, Detalhes: {detalhes_texto}"
+            resumo = f"Nome (campo NOME): {nome}, Nota (campo NOTA_REVIEW): {nota}, Endereço (campo ENDERECO): {endereco}, Horario Funcionamento (campo HR_FUNCIONAMENTO): {hr_funcionamento}, Horario de Maior Movimento Horario Funcionamento (campo MAIOR_MOVIMENTO): {maior_movimento}, Telefone (campo TELEFONE): {telefone}, Detalhes (campo DETALHES): {detalhes_texto}"
             data.append(resumo)
         data_str = "\n".join(data)
 
@@ -80,9 +82,9 @@ def process_intent(intent_data, collection, user_message):
             "Você é um assistente que ajuda os usuários a encontrar restaurantes com base em seus critérios. "
             "Use os dados fornecidos para responder à solicitação do usuário. "
             "Apenas responda a pergunta, não envie textos longos, responda em tópicos de preferência. "
-            "Responda apenas a solicitação do usuário"
+            "Responda apenas a solicitação do usuário."
             "Não recomende mais de 2 restaurantes, a menos que o usuário solicite."
-            "Não exiba detalhes dos restaurantes, apenas se o usuário pedir"
+            "Não exiba detalhes dos restaurantes, apenas se o usuário pedir."
         )
 
         chat_context.append({"role": "user", "content": user_message})
@@ -115,8 +117,26 @@ def process_intent(intent_data, collection, user_message):
         
         return assistant_reply
 
+    elif intent == 'update':
+        identifier = parameters.get('id') or parameters.get('nome')
+        field = parameters.get('campo')
+        new_value = parameters.get('valor')
+        result = update_restaurant(identifier, field, new_value)
+        return f"Restaurante {identifier} foi atualizado com sucesso!" if result else "Erro ao atualizar o restaurante."
+
+    elif intent == 'select':
+        identifier = parameters.get('id') or parameters.get('nome')
+        result = select_restaurant(identifier)
+        return f"Restaurante encontrado: {result}" if result else "Restaurante não encontrado."
+
+    elif intent == 'delete':
+        identifier = parameters.get('id') or parameters.get('nome')
+        result = delete_restaurant(identifier)
+        return f"Restaurante {identifier} foi deletado com sucesso" if result else "Erro ao deletar o restaurante."
+
     else:
         return "Desculpe, não consegui processar sua solicitação."
+
     
 def handle_request(user_message, collection):
 
