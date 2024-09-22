@@ -10,6 +10,7 @@ Este projeto visa coletar informações de restaurantes cadastrados no Google Ma
 - [Como Executar](#como-executar)
 - [Entregas Parciais](#entregas-parciais)
 - [Fluxo Lógico](#fluxo-lógico)
+- [Querys CRUD](#querys-crud)
   
 ## Ferramentas
 
@@ -115,3 +116,46 @@ Ahh... é chato, posteriormente vou colocar um Docker com os dowloads para prepa
 
 - Abaixo encontramos o fluxo lógico das interações do usuário pelo Telegram com o Banco de Dados, interpretados pela API do Chatgpt
   ![Interaction_NOSQL](https://github.com/user-attachments/assets/153561ec-e882-4e69-86bf-3d98fd301481)
+
+---------------------
+## Querys CRUD
+Abaixo vamos realizar algumas querys no ambiente Python na IDE Visual Studio Code afim de demonstrar a facilidade e utilizar da conexão criada e ensinada nos tópicos acima
+- Selecionando um restaurante
+  - Código
+
+    ![image](https://github.com/user-attachments/assets/9cfa3e7f-c4a0-4545-b7af-c0dcbb82dc16)
+    
+  - Resultado
+
+    ![image](https://github.com/user-attachments/assets/915ee489-7596-47f1-ae23-a0ff5890b9e8)
+
+- Atualizando um campo de um restaurante
+    - Código
+      
+      ![image](https://github.com/user-attachments/assets/986e6501-9d7b-474c-87c9-f2c22ef7b4f8)
+
+    - Resultado
+
+      ![image](https://github.com/user-attachments/assets/a32a9125-af17-412c-b67c-83798b1ac7d7)
+
+- Criando dois agregados
+  - Código
+
+    ![image](https://github.com/user-attachments/assets/f0965462-d4d4-4822-be6c-e6b756f96e8e)
+
+  - Resultado
+    
+    ![image](https://github.com/user-attachments/assets/ea2c3d62-2e54-4733-9680-69d9745d3759)
+
+
+- Deletando dois agregados
+    - Código
+      
+      ![image](https://github.com/user-attachments/assets/af94f001-e0f5-4fdd-8d26-a0d02bb1de62)
+      
+    - Resultado
+
+      ![image](https://github.com/user-attachments/assets/0ea1f881-5ed1-491b-84b5-218ce6adf4f3)
+
+
+      
