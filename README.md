@@ -38,9 +38,9 @@ Ahh... é chato, posteriormente vou colocar um Docker com os dowloads para prepa
 
 ## Entregas Parciais
 - ### Sobre **MongoDB**
-  Para inciar seu banco de dados de forma gratuita, é só entrar no site oficial () e realizar o login após o click no botão abaixo:
+  Para inciar seu banco de dados de forma gratuita, é só entrar no site oficial (https://www.mongodb.com/) e realizar o login após o click no botão abaixo:
 
-  ![image](https://github.com/user-attachments/assets/937bd8e6-f9e2-4657-b71e-486cd3ed7f4c)
+  ![image](https://github.com/user-attachments/assets/ea8d6367-00dc-46a8-b68e-b7771b56078e)
 
   Após o cadastro e preenchimento dos campos, o próximo passo é a criação do Cluster:
   ![image](https://github.com/user-attachments/assets/db300767-8bd5-4d24-808a-53d69a8e56a7)
