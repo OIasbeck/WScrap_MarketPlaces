@@ -60,7 +60,10 @@ Ahh... é chato, posteriormente vou colocar um Docker com os dowloads para prepa
 
   Após isso, você será direcionado para a área de criação de Banco de Dados, aqui ele disponibilizará seu usuário e senha para conexão entre outras informações importantes como chaves de acesso.
   ![image](https://github.com/user-attachments/assets/412df2d3-28e9-4017-9ba5-498677303428)
-  
+
+  ATENÇÃO VOCÊ PRECISA LIBERAR SEU IP DA MÁQUINA PARA ACESSAR O BANCO, OU LIBERAR PRA GERAL, VIDE, PARA LIBERAR TODOS IPS, COLOQUE ACESSO AO IP 0.0.0.0/0
+  ![image](https://github.com/user-attachments/assets/294bc083-f02b-45b4-96a5-9b63b9729d09)
+
 ---------------------
 - ### Sobre Conexão em Python
   Para realizar a conexão via Python, utilizando a IDE Visual Studio Code, é só seguir o passo a passo para o dowload da extenção 'MongoDB'
