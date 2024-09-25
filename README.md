@@ -4,6 +4,7 @@ Este projeto visa coletar informações de restaurantes cadastrados no Google Ma
 
 ## Exemplo de funcionamento 
 
+Criei um bot no telegram para servir de interface de usuário, a conversa abaixo foi resultado do processo de ETL que pegou todos os dados de restaurantes do google, (VIDE EXEMPLO NO ARQUIVO 'final_dataset.csv'), alocou em banco, e após uma pequena tratativa nos dados foi realizada a integração do chatgpt no banco respondendo pelo telegram. (VIDE 'FLUXO LÓGICO')
 ![image](https://github.com/user-attachments/assets/a1ae44bd-1b0d-45e9-be16-cbea8d83ecf8)
 
 ## Sumário
