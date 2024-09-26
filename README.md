@@ -120,7 +120,7 @@ Ahh... é chato, posteriormente vou colocar um Docker com os dowloads para prepa
 - DAT_FIM (string) [Data de Encerramento]
  
 ---------------------
-## Fluxo Lógico
+## Fluxo Lógico (apenas a parte da interação, o ETL daria muito trampo pra mapear cada parte)
 - Abaixo encontramos as 2 formas (improvisadíssimas, bem ruins) da forma de acionar a captura de dados, a primeria que é passando um endereço (adaptação futura para receber latitude e longitude), e a outra que é apenas executando o script, onde é rastreado todos restaurantes cadastrados.
   ![etl_nosql](https://github.com/user-attachments/assets/68d2d01f-d3e9-417a-81a6-c7d1c2fbff46)
 
