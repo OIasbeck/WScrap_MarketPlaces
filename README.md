@@ -176,3 +176,6 @@ Abaixo vamos realizar algumas querys no ambiente Python na IDE Visual Studio Cod
   - Resultado
     
       ![image](https://github.com/user-attachments/assets/f9e570d1-fe1b-477b-8e55-af30706437db)
+    
+      ![image](https://github.com/user-attachments/assets/492fba28-ea98-4503-a1cc-ff663663811b)
+
