@@ -168,4 +168,11 @@ Abaixo vamos realizar algumas querys no ambiente Python na IDE Visual Studio Cod
       ![image](https://github.com/user-attachments/assets/0ea1f881-5ed1-491b-84b5-218ce6adf4f3)
 
 
-      
+- Criando Index (Campo: Latitude e Longitude)
+  - Código
+    
+      ![image](https://github.com/user-attachments/assets/89c129d4-d8d7-4fc2-8c28-81fc6e6a32ac)
+
+  - Resultado
+    
+      ![image](https://github.com/user-attachments/assets/f9e570d1-fe1b-477b-8e55-af30706437db)
