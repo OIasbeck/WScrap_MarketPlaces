@@ -18,6 +18,7 @@ Criei um bot no telegram para servir de interface de usuário, a conversa abaixo
 - [Entregas Parciais](#entregas-parciais)
 - [Fluxo Lógico](#fluxo-lógico)
 - [Querys CRUD](#querys-crud)
+- [API'S](#apis)
   
 ## Ferramentas
 
@@ -178,4 +179,56 @@ Abaixo vamos realizar algumas querys no ambiente Python na IDE Visual Studio Cod
       ![image](https://github.com/user-attachments/assets/f9e570d1-fe1b-477b-8e55-af30706437db)
     
       ![image](https://github.com/user-attachments/assets/492fba28-ea98-4503-a1cc-ff663663811b)
+---------------------
+## API's
+Agora vamos criar uma API instânciada de forma local para trazer dados dos restaurantes. Para isso é necessário criar os end points (que nada mais são que acessos diretos à funções que, de acordo com seu método, nos retorna algo ou realiza alguma interação com o banco)
+  - Criando End Points
+    Perceba que, as funções de endpoints são chamados a partir de uma rota HTTP criada e configurada para leitura através do @app.get
+    
+    ![image](https://github.com/user-attachments/assets/996cdcb4-48e8-4d9c-8e9e-5709c96eb93d)
 
+  - Funções que executam a lógica esperada ao chamar a rota criada
+    
+    ![image](https://github.com/user-attachments/assets/894beb6c-96e1-4bac-ae88-f695c95212df)
+
+Vamos então executar essa API e testar as rotas que criamos, para isso é necessário:
+  - Entrar no diretório do seu arquivo .py que está instânciada sua classe FastAPI (no caso, onde você instânciou o app)
+  - Executar o comando "uvicorn 'nome_do_seu_arquivo':app"  Exemplo:
+    
+    ![image](https://github.com/user-attachments/assets/4e11a6e3-ef0c-4b4e-a467-e050a0e4e603)
+
+  - Se tudo estiver correto, será exibida a informação de disponibilidade do uso do servidor, direcionando para seu endereço localhost 127.0.0.1, na porta padrão para endereço IP :8000
+
+    ![image](https://github.com/user-attachments/assets/35cc61a6-8bab-415e-b102-1f5bb55b1b81)
+
+  - Agora é só jogar em um navegador Web e testar suas rotas que acessam seus endpoints, vamos testar 3 endpoints do método .get
+
+    - Endpoint (/)
+
+      **Acessa a função read_root() que traz uma mensagem inicial, informando que o serviço está funcionando**
+      
+      ![image](https://github.com/user-attachments/assets/22563e86-6e3e-49d2-8689-0b45587ea218)
+
+    - Endpoint (/restaurants/)
+
+      **Acessa a função get_all_restaurants() que retorna todos os restaurantes**
+      
+      ![image](https://github.com/user-attachments/assets/1be5591c-2c7d-400b-bf59-f4bbe1a6cf36)
+
+    - Endpoint (/restaurants/top/)
+
+      **Acessa a função get_top_restaurants_endpoint() que retorna o nome e o endereço dos top 3 restaurantes com melhor nota e com maior quantidade de reviews**
+   
+      ![image](https://github.com/user-attachments/assets/5b658276-6ad5-44e9-b345-0de3b817a860)
+  
+  - Agora vamos chamar um endpoint de método .post(), para isso, vamos acessar o caminho /docs/
+
+      ![image](https://github.com/user-attachments/assets/f8625049-fdc4-4616-9a18-ca5ce310fc0f)
+
+      - **Observe, os campos necessários para a criação foram definidos na classe criada no mesmo arquivo .py que estamos instânciando o FastAPI (Se o usuário não escrever um campo, não tem problema, será preenchido como None na implementação)**
+
+        ![image](https://github.com/user-attachments/assets/7890acdc-3e40-497c-b603-a737f40a55e5)
+
+      - **Após clicar em 'Try Out' edite o .json com os dados à serem inseridos e execute.**
+
+          ![image](https://github.com/user-attachments/assets/acd932ff-1ff3-4e90-85d7-993b158bf1e3)
