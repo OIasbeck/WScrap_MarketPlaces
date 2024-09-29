@@ -201,7 +201,7 @@ Vamos então executar essa API e testar as rotas que criamos, para isso é neces
 
     ![image](https://github.com/user-attachments/assets/35cc61a6-8bab-415e-b102-1f5bb55b1b81)
 
-  - Agora é só jogar em um navegador Web e testar suas rotas que acessam seus endpoints, vamos testar 3
+  - Agora é só jogar em um navegador Web e testar suas rotas que acessam seus endpoints, vamos testar 3 endpoints do método .get
 
     - Endpoint (/)
 
@@ -220,3 +220,15 @@ Vamos então executar essa API e testar as rotas que criamos, para isso é neces
       **Acessa a função get_top_restaurants_endpoint() que retorna o nome e o endereço dos top 3 restaurantes com melhor nota e com maior quantidade de reviews**
    
       ![image](https://github.com/user-attachments/assets/5b658276-6ad5-44e9-b345-0de3b817a860)
+  
+  - Agora vamos chamar um endpoint de método .post(), para isso, vamos acessar o caminho /docs/
+
+      ![image](https://github.com/user-attachments/assets/f8625049-fdc4-4616-9a18-ca5ce310fc0f)
+
+      - **Observe, os campos necessários para a criação foram definidos na classe criada no mesmo arquivo .py que estamos instânciando o FastAPI (Se o usuário não escrever um campo, não tem problema, será preenchido como None na implementação)**
+
+        ![image](https://github.com/user-attachments/assets/7890acdc-3e40-497c-b603-a737f40a55e5)
+
+      - **Após clicar em 'Try Out' edite o .json com os dados à serem inseridos e execute.**
+
+          ![image](https://github.com/user-attachments/assets/acd932ff-1ff3-4e90-85d7-993b158bf1e3)
