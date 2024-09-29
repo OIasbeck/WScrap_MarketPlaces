@@ -185,7 +185,7 @@ Agora vamos criar uma API instânciada de forma local para trazer dados dos rest
   - Criando End Points
     Perceba que, as funções de endpoints são chamados a partir de uma rota HTTP criada e configurada para leitura através do @app.get
     
-    ![image](https://github.com/user-attachments/assets/d4b25712-8516-44d9-b46b-21462757ea55)
+    ![image](https://github.com/user-attachments/assets/996cdcb4-48e8-4d9c-8e9e-5709c96eb93d)
 
   - Funções que executam a lógica esperada ao chamar a rota criada
     
