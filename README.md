@@ -182,12 +182,12 @@ Abaixo vamos realizar algumas querys no ambiente Python na IDE Visual Studio Cod
 ---------------------
 ## API's
 Agora vamos criar uma API instânciada de forma local para trazer dados dos restaurantes. Para isso é necessário criar os end points (que nada mais são que acessos diretos à funções que, de acordo com seu método, nos retorna algo ou realiza alguma interação com o banco)
-  - Criando End Points
+  - Criando End Points (Foi criado o arquivo **apis_management.py** para criação do .app e endpoints)
     Perceba que, as funções de endpoints são chamados a partir de uma rota HTTP criada e configurada para leitura através do @app.get
     
     ![image](https://github.com/user-attachments/assets/996cdcb4-48e8-4d9c-8e9e-5709c96eb93d)
 
-  - Funções que executam a lógica esperada ao chamar a rota criada
+  - Funções que executam a lógica esperada ao chamar a rota criada (Foi criado o arquivo **crude_functions_api.py** afim de realizar o que será pedido pelo endpoint)
     
     ![image](https://github.com/user-attachments/assets/894beb6c-96e1-4bac-ae88-f695c95212df)
 
