@@ -33,11 +33,6 @@ for posicao in range(len(qtd_locais)):
     
     print(f'--> Iniciando Scrapping...')
     dataframe = dev.Process().scrapping_bussines(driver, wait = 1.2)
-    
-    obj_preprocess = organize_data.PreProcessing(dataframe)
-    obj_preprocess.new_features()
-    obj_preprocess.adjusting_columns()
-    dataframe = obj_preprocess.return_()
 
     dfs.append(dataframe)
     
