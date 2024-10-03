@@ -2,7 +2,7 @@ import json
 
 from Class.inputs.keys_all import *
 from Class.inputs.keys_database import api_gpt
-from crude_functions import *
+# from crude_functions import *
 
 from openai import OpenAI
 import nltk
@@ -24,17 +24,14 @@ def remove_stopwords(text, stopwords_set):
 
 def interpret_user_message(user_message):
     system_prompt = (
-        "Você é um assistente que interpreta solicitações de usuários "
-        "para consultas e operações CRUD em um banco de dados de restaurantes. "
+      "Você é um assistente que interpreta solicitações de usuários "
         "Responda no formato JSON com os campos 'intent' e 'parameters'. "
-        "Os tipos no campo intent podem ser: recommendation, smalltalk, update, select, delete. "
-        "Se o usuário estiver pedindo para realizar operações no banco de dados como atualizar ou consultar um restaurante, defina o intent como update, select, ou delete conforme apropriado. "
-        "Os 'parameters' devem conter os campos necessários para realizar a operação, como 'nome', 'id', 'campo' (para updates), e 'valor'. "
+        "Os tipos no campo intent podem ser: recommendation, smalltalk. "
         "Se o usuário estiver apenas conversando, defina 'intent' como 'smalltalk'. "
-        "Se o usuário estiver pedindo recomendações de restaurantes, defina 'intent' como 'recommendation'. "
+        "Se o usuário estiver pedindo recomendações de restaurantes, ou falar a palavra restaurante, defina 'intent' como 'recommendation'. "
         "Não inclua explicações adicionais."
     )
-    
+
     response = client.chat.completions.create(
         model='gpt-3.5-turbo',
         messages=[
@@ -63,7 +60,11 @@ def process_intent(intent_data, collection, user_message):
             maior_movimento = restaurant.get('MAIOR_MOVIMENTO', '')
             telefone = restaurant.get('TELEFONE', '')
             detalhes = restaurant.get('DETALHES', {})
-            
+            latitude = str(restaurant.get('LATITUDE', {}))
+            latitude = latitude[:3] + '.' + latitude[3:] if latitude.startswith('-') else latitude[:2] + '.' + latitude[2:]
+            longitude = str(restaurant.get('LONGITUDE', {}))
+            longitude = longitude[:3] + '.' + longitude[3:] if longitude.startswith('-') else longitude[:2] + '.' + longitude[2:]
+
             nome = remove_stopwords(nome, stopwords_pt)
             endereco = remove_stopwords(endereco, stopwords_pt)
             
@@ -74,7 +75,15 @@ def process_intent(intent_data, collection, user_message):
                 detalhes_texto += f"{key_clean}: {value_clean}, "
             detalhes_texto = detalhes_texto.rstrip(', ')
             
-            resumo = f"Nome (campo NOME): {nome}, Nota (campo NOTA_REVIEW): {nota}, Endereço (campo ENDERECO): {endereco}, Horario Funcionamento (campo HR_FUNCIONAMENTO): {hr_funcionamento}, Horario de Maior Movimento Horario Funcionamento (campo MAIOR_MOVIMENTO): {maior_movimento}, Telefone (campo TELEFONE): {telefone}, Detalhes (campo DETALHES): {detalhes_texto}"
+            google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
+            
+            resumo = (f"Nome (campo NOME): {nome}, Nota (campo NOTA_REVIEW): {nota}, "
+                      f"Endereço (campo ENDERECO): {endereco}, "
+                      f"Horario Funcionamento (campo HR_FUNCIONAMENTO): {hr_funcionamento}, "
+                      f"Horario de Maior Movimento Horario Funcionamento (campo MAIOR_MOVIMENTO): {maior_movimento}, "
+                      f"Telefone (campo TELEFONE): {telefone}, Detalhes (campo DETALHES): {detalhes_texto}, "
+                      f"Rota no mapa: {google_maps_link}")
+            
             data.append(resumo)
         data_str = "\n".join(data)
 
@@ -116,23 +125,37 @@ def process_intent(intent_data, collection, user_message):
         chat_context.append({"role": "assistant", "content": assistant_reply})
         
         return assistant_reply
+    
+    # elif intent == 'route':
+    #     chat_context.append({"role": "user", "content": user_message})
+        
+    #     response = client.chat.completions.create(
+    #         model='gpt-3.5-turbo',
+    #         messages=chat_context[-6:]
+    #     )
+    #     assistant_reply = response.choices[0].message.content.strip()
+            
+    #     maps_url = f"https://www.google.com/maps/dir/{user_location}/{restaurant_address}"
+        
+    #     # Retorna o link ao usuário como resposta
+    #     return f"Aqui está o link para a rota até o restaurante {restaurant_name}: {maps_url}"
 
-    elif intent == 'update':
-        identifier = parameters.get('id') or parameters.get('nome')
-        field = parameters.get('campo')
-        new_value = parameters.get('valor')
-        result = update_restaurant(identifier, field, new_value)
-        return f"Restaurante {identifier} foi atualizado com sucesso!" if result else "Erro ao atualizar o restaurante."
+    # elif intent == 'update':
+    #     identifier = parameters.get('id') or parameters.get('nome')
+    #     field = parameters.get('campo')
+    #     new_value = parameters.get('valor')
+    #     result = update_restaurant(identifier, field, new_value)
+    #     return f"Restaurante {identifier} foi atualizado com sucesso!" if result else "Erro ao atualizar o restaurante."
 
-    elif intent == 'select':
-        identifier = parameters.get('id') or parameters.get('nome')
-        result = select_restaurant(identifier)
-        return f"Restaurante encontrado: {result}" if result else "Restaurante não encontrado."
+    # elif intent == 'select':
+    #     identifier = parameters.get('id') or parameters.get('nome')
+    #     result = select_restaurant(identifier)
+    #     return f"Restaurante encontrado: {result}" if result else "Restaurante não encontrado."
 
-    elif intent == 'delete':
-        identifier = parameters.get('id') or parameters.get('nome')
-        result = delete_restaurant(identifier)
-        return f"Restaurante {identifier} foi deletado com sucesso" if result else "Erro ao deletar o restaurante."
+    # elif intent == 'delete':
+    #     identifier = parameters.get('id') or parameters.get('nome')
+    #     result = delete_restaurant(identifier)
+    #     return f"Restaurante {identifier} foi deletado com sucesso" if result else "Erro ao deletar o restaurante."
 
     else:
         return "Desculpe, não consegui processar sua solicitação."

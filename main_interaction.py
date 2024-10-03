@@ -10,9 +10,10 @@ from Class.inputs.get_conections import Get_connection
 
 bot = telepot.Bot(telegram_token)
 
-client = Get_connection.conn()
+client = Get_connection.conn() # ------------>>
 db = client['scrapping_google']
 collection = db['restaurants']
+
 
 def handle_message(msg):
 
@@ -34,3 +35,4 @@ print('Manda bala')
 
 while True:
     time.sleep(10)
+
