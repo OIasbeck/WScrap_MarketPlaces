@@ -189,7 +189,7 @@ Agora vamos criar uma API instânciada de forma local para trazer dados dos rest
 
   - Funções que executam a lógica esperada ao chamar a rota criada (Foi criado o arquivo **crude_functions_api.py** afim de realizar o que será pedido pelo endpoint)
     
-    ![image](https://github.com/user-attachments/assets/894beb6c-96e1-4bac-ae88-f695c95212df)
+    ![image](https://github.com/user-attachments/assets/3457a1b2-cd6f-4a90-aceb-f01a03c04111)
 
 Vamos então executar essa API e testar as rotas que criamos, para isso é necessário:
   - Entrar no diretório do seu arquivo .py que está instânciada sua classe FastAPI (no caso, onde você instânciou o app)
