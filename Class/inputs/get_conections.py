@@ -7,11 +7,20 @@ import time
 
 from Class.inputs.keys_all import *
 from pymongo import MongoClient
+import redis
 
 class Get_connection:
 
-    def conn():return MongoClient(string_connection)
+    def conn_mongo():return MongoClient(string_connection)
 
+    def conn_redis():
+        r = redis.Redis(
+        host='redis-19915.c17.us-east-1-4.ec2.redns.redis-cloud.com',
+        port=19915,
+        password=password_redis)
+
+        return r
+    
 class Driver:
 
     def __init__(self,
