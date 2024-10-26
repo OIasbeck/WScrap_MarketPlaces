@@ -285,7 +285,8 @@ Vamos então iniciar o trabalho em cima da base não relacional Redis.
 
     Note que, para realizar a criação dessa estrutura probabilistica, é necessário um novo módulo de iniciação de acesso!
     
-    ![image](https://github.com/user-attachments/assets/90339c3c-2977-4096-89f0-2c08b322bacd)
+    ![temp2](https://github.com/user-attachments/assets/101c99b7-f10f-4281-894f-a05615989a72)
+
 
   - **Buscar existencia de Acessibilidade**
 
