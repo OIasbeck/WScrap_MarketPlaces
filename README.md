@@ -234,6 +234,15 @@ Vamos então executar essa API e testar as rotas que criamos, para isso é neces
 
           ![image](https://github.com/user-attachments/assets/acd932ff-1ff3-4e90-85d7-993b158bf1e3)
 
+    - **API REDIS**
+   
+      Aqui foi utilizado o campo de restaurantes adicionado por estrutura probabilistica 'HyperLogLog' para trazer a quantidade de restaurantes únicos
+
+       ![image](https://github.com/user-attachments/assets/83d5403c-40d8-4113-b7ff-26526b70372d)
+
+       ![image](https://github.com/user-attachments/assets/df1e9c50-0a6a-4e15-8747-4bad9fccb445)
+
+
 ---------------------
 ## Redis
 Vamos então iniciar o trabalho em cima da base não relacional Redis.
@@ -268,4 +277,22 @@ Vamos então iniciar o trabalho em cima da base não relacional Redis.
     
     ![image](https://github.com/user-attachments/assets/8becfd73-cee2-45eb-98f8-6c98df015aa9)
 
+- **BloomFilter**
+
+BloomFilter é uma estrutura de dados também probabilistica que também necessita de um identificador no momento de inserção, e que busca se há a presença de um elemento nos dados que foram adicionados com esse identificador. Para isso, vamos selecionar o campo 'ACESSIBILIDADE' para podermos pesquisar as acessibilidades presentes nos restaurantes registrados.
+  
+  - **Escolha de campos**
+
+    Note que, para realizar a criação dessa estrutura probabilistica, é necessário um novo módulo de iniciação de acesso!
     
+    ![image](https://github.com/user-attachments/assets/90339c3c-2977-4096-89f0-2c08b322bacd)
+
+  - **Buscar existencia de Acessibilidade**
+
+    **NOTE QUE ELE ACHA SOMENTE SE DESCRITO A CAMPO INTEIRO!**
+
+    ![image](https://github.com/user-attachments/assets/3c89c0b9-01e5-4652-b928-4989ff7d4750)
+
+- **API**
+
+  PARA VISUALIZAR A ROTA CRIADA ATRAVÉS DA ESTRUTURAÇÃO PROBABILISTICA, VIDE ÚLTIMA NOTA DO TÓPICO [API'S](#apis)
