@@ -17,7 +17,6 @@ def get_restaurants(collection):
     
     return restaurants
 
-
 def create_restaurant(restaurant, collection):
     result = collection.insert_one(restaurant.dict())
     return str(result.inserted_id)
@@ -36,22 +35,35 @@ def delete_restaurant(restaurant_id: str, collection):
     result = collection.delete_one({"_id": ObjectId(restaurant_id)})
     return result.deleted_count
 
-def get_top_restaurants(collection):
-
-    top_restaurants = list(collection.find().sort([
-        ("NOTA_REVIEW", -1),
-        ("QTD_REVIEW", -1) 
-    ]).limit(3)) 
-    
-    for restaurant in top_restaurants:
-        restaurant['_id'] = str(restaurant['_id'])
-    
-    return top_restaurants
 
 def get_top_restaurants(collection):
-    top_restaurants = list(collection.find({}, {"NOME": 1, "ENDERECO": 1, "_id": 0}).sort([
-                    ("NOTA_REVIEW", -1), 
-                    ("QTD_REVIEW", -1)
-                ]).limit(3))
-    
+    pipeline = [
+        {
+            "$project": { 
+                "NOME": 1,
+                "ENDERECO": 1,
+                "NOTA_REVIEW": 1,
+                "QTD_REVIEW": 1,
+                "_id": 0 
+            }
+        },
+        {
+            "$sort": {
+                "NOTA_REVIEW": -1,
+                "QTD_REVIEW": -1 }
+        },
+        {
+            "$limit": 3 }
+    ]
+    top_restaurants = list(collection.aggregate(pipeline))
     return top_restaurants
+
+
+def get_unique_restaurants_count(r):
+
+    try:
+        unique_count = r.pfcount("unique_restaurants")
+        return unique_count
+    except Exception as e:
+        print(f"Erro ao obter a contagem de restaurantes únicos: {e}")
+        return 0

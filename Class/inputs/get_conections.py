@@ -5,7 +5,7 @@ from fake_useragent import UserAgent
 
 import time
 
-from Class.inputs.keys_database import *
+from Class.inputs.keys_all import *
 from pymongo import MongoClient
 
 class Get_connection:
