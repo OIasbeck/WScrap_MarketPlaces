@@ -19,6 +19,7 @@ Criei um bot no telegram para servir de interface de usuário, a conversa abaixo
 - [Fluxo Lógico](#fluxo-lógico)
 - [Querys CRUD](#querys-crud)
 - [API'S](#apis)
+- [Redis](#redis)
   
 ## Ferramentas
 
@@ -232,3 +233,39 @@ Vamos então executar essa API e testar as rotas que criamos, para isso é neces
       - **Após clicar em 'Try Out' edite o .json com os dados à serem inseridos e execute.**
 
           ![image](https://github.com/user-attachments/assets/acd932ff-1ff3-4e90-85d7-993b158bf1e3)
+
+---------------------
+## Redis
+Vamos então iniciar o trabalho em cima da base não relacional Redis.
+
+- **Captura de dados**
+  Aqui vamos pegar os dados que foram inseridos no banco **Mongo DB** para podermos inserir no banco **Redis**
+  
+  ![image](https://github.com/user-attachments/assets/0bbbc902-722b-40c7-a8b1-4c52a7a20ede)
+
+- **Inserção de dados**
+  Nessa passo, vamos colocar os dados pegos no Redis, mas de maneira à usarmos **Hash**. Hashs se tratam de uma arquitetura de armazenamento de dados onde você pode relacionar diversos dados em diversos formatos vinculados à uma chave.
+
+  - Conexão
+    
+    ![image](https://github.com/user-attachments/assets/90916e95-485a-40fd-817e-50c4e812d881)
+
+  - Inserção Via Hash (Utilizando como chave o campo 'ID_BUSSINESS')
+    
+    ![image](https://github.com/user-attachments/assets/cfe89d2a-1a16-46cf-aada-944a03168e97)
+
+- **HyperLogLog**
+  
+  HyperLogLog é uma estrutura de dados probabilistca que permite realizar operações (como de contagem) em grandes volumes de dados utilizando uma probabilidade de ocorrência, porém com uma pequena margem de erro (O que geralmente não é problema quando se imagina o motivo de uso em armazenamento BigData, dados sensíveis são dispostos em outras soluções)
+
+  - **Escolha de campos**
+    
+    Vamos escolher alguns campos (Nome e Endereço) para realizar uma contagem aproximada, para isso, é necessário adicionar um identificador 'HyperLogLog' aos campos no moemnto de inserção;
+
+    ![image](https://github.com/user-attachments/assets/80c58cb4-afcd-422a-ab74-d5c2b8e8eae6)
+
+  - **Contagem de campos únicos utilizando probabilidade de ocorrência**
+    
+    ![image](https://github.com/user-attachments/assets/8becfd73-cee2-45eb-98f8-6c98df015aa9)
+
+    
