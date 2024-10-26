@@ -279,7 +279,7 @@ Vamos então iniciar o trabalho em cima da base não relacional Redis.
 
 - **BloomFilter**
 
-BloomFilter é uma estrutura de dados também probabilistica que também necessita de um identificador no momento de inserção, e que busca se há a presença de um elemento nos dados que foram adicionados com esse identificador. Para isso, vamos selecionar o campo 'ACESSIBILIDADE' para podermos pesquisar as acessibilidades presentes nos restaurantes registrados.
+  BloomFilter é uma estrutura de dados também probabilistica que também necessita de um identificador no momento de inserção, e que busca se há a presença de um elemento nos dados que foram adicionados com esse identificador. Para isso, vamos selecionar o campo 'ACESSIBILIDADE' para podermos pesquisar as acessibilidades presentes nos restaurantes registrados.
   
   - **Escolha de campos**
 
